@@ -197,13 +197,18 @@ module.exports = {
                 eventInfo.creator = event.creatorEmail;
                 eventInfo.date = event.date;
                 let mapsCollection = await mapsData()
+                console.log(mapsCollection) 
                 let mapInfo = await mapsCollection.findOne({ eventsId: event._id });
+                console.log("Hey")
+                console.log(mapInfo)
+
+                if(mapInfo != null){
                 eventInfo.time = mapInfo.time;
                 eventInfo.location = event.location;
                 eventInfo.groundName = mapInfo.name;
                 eventInfo.address = mapInfo.address;
-
-                result.push(eventInfo);
+                } 
+                result.push(eventInfo); 
             }
         }
         
